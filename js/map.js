@@ -43,7 +43,7 @@ class Map {
 			}
 		}
 	}
-	static load(file, ctx) {
+	static load(file, ctx, callback) {
 		var request = new XMLHttpRequest();
 		request.onreadystatechange = function() {
 			if (this.readyState === this.DONE) {
@@ -56,8 +56,8 @@ class Map {
 						map.grid[j][i] = new GridNode(i,j, jsonMap.data[i][j].state);
 					}
 				}
-				console.log(map);
 				map.draw(ctx);
+				callback(map);
 			}
 		}
 		request.open("GET", file);

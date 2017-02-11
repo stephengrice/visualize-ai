@@ -1,14 +1,14 @@
 {
 	"name" : "Small",
 	"data" : [
-		[{"state":1}, {"state":0}, {"state":0}, {"state":0}, {"state":0}],
+		[{"state":0}, {"state":1}, {"state":1}, {"state":1}, {"state":1}],
 
 		[{"state":0}, {"state":0}, {"state":0}, {"state":0}, {"state":1}],
 		
-		[{"state":0}, {"state":0}, {"state":0}, {"state":0}, {"state":0}],
+		[{"state":1}, {"state":0}, {"state":1}, {"state":0}, {"state":0}],
 		
-		[{"state":0}, {"state":0}, {"state":0}, {"state":0}, {"state":1}],
+		[{"state":1}, {"state":0}, {"state":0}, {"state":0}, {"state":1}],
 		
-		[{"state":0}, {"state":0}, {"state":0}, {"state":0}, {"state":0}]
+		[{"state":1}, {"state":0}, {"state":0}, {"state":0}, {"state":0}]
 	]
 }

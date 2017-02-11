@@ -13,8 +13,13 @@ var ctx = c.getContext("2d");
 c.width = CANVAS_WIDTH;
 c.height = CANVAS_HEIGHT;
 
-//var map = new Map(MAP_WIDTH, MAP_HEIGHT, SQUARE_WIDTH, SQUARE_HEIGHT);
+var map = null;
 
-//map.draw(ctx);
-
-Map.load("../maps/small.json", ctx);
+function loadMap() {
+	Map.load("./maps/small.json", ctx, function(response) {
+		map = response;
+	
+		document.getElementById("btnLoad").disabled = true;
+		document.getElementById("btnStart").disabled = false;
+	});
+}
