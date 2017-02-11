@@ -13,8 +13,4 @@ var ctx = c.getContext("2d");
 c.width = CANVAS_WIDTH;
 c.height = CANVAS_HEIGHT;
 
-var map = new Map(MAP_WIDTH, MAP_HEIGHT);
-
-map.draw(ctx);
-
-Map.load("../maps/small.json");
+var map = Map.load("../maps/small.json", ctx);

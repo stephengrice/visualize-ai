@@ -47,21 +47,9 @@ class Map {
 		for (var i = 0; i < this.width; i++) {
 			for (var j = 0; j < this.height; j++) {
 				grid[i][j] = new GridNode(i,j);
-				grid[i][j].north = true;
-				grid[i][j].south = true;
-				grid[i][j].east = true;
-				grid[i][j].west = true;
-				/*if (i % 3 == 0) {
-					grid[i][j] = new GridNode(i,j);
-					grid[i][j].north = true;
-					grid[i][j].west = true;
-				} else {
-					grid[i][j] = new GridNode(i,j);
-					grid[i][j].east = true;
-					grid[i][j].south = true;
-				}*/					
 			}
 		}
+
 		this.grid = grid;
 	}
 	draw(ctx) {
@@ -71,12 +59,24 @@ class Map {
 			}
 		}
 	}
-	static load(file) {
+	static load(file, ctx) {
 		var request = new XMLHttpRequest();
 		request.onreadystatechange = function() {
 			if (this.readyState === this.DONE) {
 				var jsonMap = JSON.parse(request.responseText);
 				console.log(jsonMap.name);
+				// Fill a Map object with the data
+				var map = new Map(jsonMap.data.length, jsonMap.data[0].length);
+				for (var i = 0; i < map.width; i++) {
+					for (var j = 0; j < map.height; j++) {
+						map.grid[j][i] = new GridNode(i,j);
+						map.grid[j][i].north = jsonMap.data[j][i].north;
+						map.grid[j][i].south = jsonMap.data[j][i].south;
+						map.grid[j][i].east = jsonMap.data[j][i].east;
+						map.grid[j][i].west = jsonMap.data[j][i].west;
+					}
+				}
+				map.draw(ctx);
 			}
 		}
 		request.open("GET", file);

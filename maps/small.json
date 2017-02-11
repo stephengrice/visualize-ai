@@ -1,14 +1,34 @@
 {
 	"name" : "Small",
 	"data" : [
-		[{"north":true, "south":true, "east":true, "west":true}, {"north":true, "south":true, "east":true, "west":true}, {"north":true, "south":true, "east":true, "west":true}, {"north":true, "south":true, "east":true, "west":true}, {"north":true, "south":true, "east":true, "west":true}],
+		[{"north":true, "south":true, "east":false, "west":true},
+		 {"north":true, "south":true, "east":false, "west":false},
+		 {"north":true, "south":true, "east":false, "west":false},
+		 {"north":true, "south":true, "east":false, "west":false},
+		 {"north":true, "south":false, "east":true, "west":false}],
 		
-		[{"north":true, "south":true, "east":true, "west":true}, {"north":true, "south":true, "east":true, "west":true}, {"north":true, "south":true, "east":true, "west":true}, {"north":true, "south":true, "east":true, "west":true}, {"north":true, "south":true, "east":true, "west":true}],
+		[{"north":true, "south":true, "east":true, "west":true},
+		 {"north":true, "south":true, "east":true, "west":true},
+		 {"north":true, "south":true, "east":true, "west":true},
+		 {"north":true, "south":true, "east":true, "west":true},
+		 {"north":false, "south":true, "east":true, "west":true}],
 		
-		[{"north":true, "south":true, "east":true, "west":true}, {"north":true, "south":true, "east":true, "west":true}, {"north":true, "south":true, "east":true, "west":true}, {"north":true, "south":true, "east":true, "west":true}, {"north":true, "south":true, "east":true, "west":true}],
+		[{"north":true, "south":true, "east":true, "west":true},
+		 {"north":true, "south":true, "east":true, "west":true},
+		 {"north":true, "south":true, "east":true, "west":true},
+		 {"north":true, "south":true, "east":true, "west":true},
+		 {"north":true, "south":true, "east":true, "west":true}],
 		
-		[{"north":true, "south":true, "east":true, "west":true}, {"north":true, "south":true, "east":true, "west":true}, {"north":true, "south":true, "east":true, "west":true}, {"north":true, "south":true, "east":true, "west":true}, {"north":true, "south":true, "east":true, "west":true}],
+		[{"north":true, "south":true, "east":true, "west":true},
+		 {"north":true, "south":true, "east":true, "west":true},
+		 {"north":true, "south":true, "east":true, "west":true},
+		 {"north":true, "south":true, "east":true, "west":true},
+		 {"north":true, "south":true, "east":true, "west":true}],
 		
-		[{"north":true, "south":true, "east":true, "west":true}, {"north":true, "south":true, "east":true, "west":true}, {"north":true, "south":true, "east":true, "west":true}, {"north":true, "south":true, "east":true, "west":true}, {"north":true, "south":true, "east":true, "west":true}]
+		[{"north":true, "south":true, "east":true, "west":true},
+		 {"north":true, "south":true, "east":true, "west":true},
+		 {"north":true, "south":true, "east":true, "west":true},
+		 {"north":true, "south":true, "east":true, "west":true},
+		 {"north":true, "south":true, "east":true, "west":true}]
 	]
 }
