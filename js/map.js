@@ -1,6 +1,8 @@
 var Type = Object.freeze({
 	FREE: 0,
-	WALL: 1
+	WALL: 1,
+	START: 2,
+	GOAL: 3
 });
 
 class GridNode {
@@ -37,9 +39,22 @@ class Map {
 		for (var i = 0; i < this.width; i++) {
 			for (var j = 0; j < this.height; j++) {
 				var cur = this.grid[i][j];
-				if (cur.type == Type.WALL) {
-					ctx.fillRect(i * this.squareWidth, j * this.squareHeight, this.squareWidth, this.squareHeight);
+				switch(cur.type) {
+					default:
+					case Type.FREE:
+						ctx.fillStyle = "#FFF";
+						break;
+					case Type.WALL:
+						ctx.fillStyle = "#000";
+						break;
+					case Type.START:
+						ctx.fillStyle = "#F00";
+						break;
+					case Type.GOAL:
+						ctx.fillStyle = "#0F0";
+						break;
 				}
+				ctx.fillRect(i * this.squareWidth, j * this.squareHeight, this.squareWidth, this.squareHeight);
 			}
 		}
 	}
@@ -51,6 +66,8 @@ class Map {
 				console.log(jsonMap.name);
 				// Fill a Map object with the data
 				var map = new Map(jsonMap.data.length, jsonMap.data[0].length, SQUARE_WIDTH, SQUARE_HEIGHT);
+				map.start_x = jsonMap.start_x;
+				map.start_y = jsonMap.start_y;
 				for (var i = 0; i < map.width; i++) {
 					for (var j = 0; j < map.height; j++) {
 						map.grid[j][i] = new GridNode(i,j, jsonMap.data[i][j].state);

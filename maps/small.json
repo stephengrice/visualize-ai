@@ -1,7 +1,9 @@
 {
 	"name" : "Small",
+	"start_x" : 0,
+	"start_y" : 0,
 	"data" : [
-		[{"state":0}, {"state":1}, {"state":1}, {"state":1}, {"state":1}],
+		[{"state":2}, {"state":1}, {"state":1}, {"state":1}, {"state":1}],
 
 		[{"state":0}, {"state":0}, {"state":0}, {"state":0}, {"state":1}],
 		
@@ -9,6 +11,6 @@
 		
 		[{"state":1}, {"state":0}, {"state":0}, {"state":0}, {"state":1}],
 		
-		[{"state":1}, {"state":0}, {"state":0}, {"state":0}, {"state":0}]
+		[{"state":1}, {"state":0}, {"state":0}, {"state":0}, {"state":3}]
 	]
 }
