@@ -29,19 +29,35 @@ function loadMap() {
 }
 
 function start() {
+	document.getElementById("btnStart").disabled = true;
+	document.getElementById("btnStop").disabled = false;
 	current = map.grid[0][0];
 	
+	searchLoop();
 	interval = setInterval(searchLoop, DELAY);
 }
 
+function stop() {
+	document.getElementById("btnStart").disabled = false;
+	document.getElementById("btnStop").disabled = true;
+	clearInterval(interval);
+}
+
 function searchLoop() {
-	current = Search.successors(current,map)[0];
+	// Draw map and then current node over top
 	map.draw(ctx);
 	ctx.fillStyle = "#00F";
 	ctx.fillRect(current.x * SQUARE_WIDTH, current.y * SQUARE_HEIGHT, SQUARE_WIDTH, SQUARE_HEIGHT);
-	console.log(current);
+	
+	// Terminate at goal
 	if (current.type == Type.GOAL) {
 		console.log("Found goal");
 		clearInterval(interval);
 	}
+	console.log(Search.successors(current, map));
+	// Update current to first possible successor
+	var succs = Search.successors(current, map);
+	var rand = Math.floor(Math.random() * (succs.length));
+	console.log("rand" + rand);
+	current = succs[rand];
 }

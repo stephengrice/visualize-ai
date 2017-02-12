@@ -6,10 +6,44 @@ var Type = Object.freeze({
 });
 
 class GridNode {
-	constructor(x, y, type) {
+	constructor(x, y, map, type) {
 		this.x = x;
 		this.y = y;
+		this.map = map;
 		this.type = type || Type.FREE;
+	}
+	
+	get north() {
+		// check bounds
+		if (this.y == 0) {
+			return null;
+		} else {
+			return map.grid[this.x][this.y - 1];
+		}
+	}
+	get south() {
+		// check bounds
+		if (this.y == map.height - 1) {
+			return null;
+		} else {
+			return map.grid[this.x][this.y + 1];
+		}
+	}
+	get east() {
+		// check bounds
+		if (this.x == this.map.width - 1) {
+			return null;
+		} else {
+			return map.grid[this.x + 1][this.y];
+		}
+	}
+	get west() {
+		// check bounds
+		if (this.x == 0) {
+			return null;
+		} else {
+			return map.grid[this.x - 1][this.y];
+		}
 	}
 }
 class Map {
@@ -27,9 +61,9 @@ class Map {
 		for (var i = 0; i < this.width; i++) {
 			for (var j = 0; j < this.height; j++) {
 				if (i*j % 2 == 0)
-					grid[i][j] = new GridNode(i,j, Type.WALL);
+					grid[i][j] = new GridNode(i,j, this, Type.WALL);
 				else
-					grid[i][j] = new GridNode(i,j);
+					grid[i][j] = new GridNode(i, j, this);
 			}
 		}
 
@@ -70,7 +104,7 @@ class Map {
 				map.start_y = jsonMap.start_y;
 				for (var i = 0; i < map.width; i++) {
 					for (var j = 0; j < map.height; j++) {
-						map.grid[j][i] = new GridNode(i,j, jsonMap.data[i][j].state);
+						map.grid[i][j] = new GridNode(i,j, map, jsonMap.data[j][i].state);
 					}
 				}
 				map.draw(ctx);
