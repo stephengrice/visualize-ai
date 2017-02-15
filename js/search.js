@@ -6,8 +6,13 @@ class SearchNode {
 }
 
 class Search {
-	construct(map) {
+	construct(map, startNode) {
 		this.map = map;
+		this.current = startNode;
+	}
+  
+	foundGoal() {
+		return this.current.type == Type.GOAL;
 	}
 	
 	static successors(node, map) {
@@ -33,5 +38,25 @@ class Search {
 	
 	static isFree(node, map) {
 		return node !=node.y > 0 && map.grid[node.x][node.y - 1] != null && map.grid[node.x][node.y - 1].type != Type.WALL
+	}
+}
+
+class PseudoRandomSearch extends Search {
+	
+	constructor(map, startNode) {
+		super();
+		this.map = map;
+		this.current = startNode;
+	}
+	
+	draw(ctx) {
+		ctx.fillStyle = "#00F";
+		ctx.fillRect(this.current.x * SQUARE_WIDTH, this.current.y * SQUARE_HEIGHT, SQUARE_WIDTH, SQUARE_HEIGHT);
+	}
+	
+	step() {
+		var succs = Search.successors(this.current, this.map);
+		var rand = Math.floor(Math.random() * (succs.length));
+		this.current = succs[rand];
 	}
 }

@@ -18,6 +18,7 @@ c.height = CANVAS_HEIGHT;
 var map = null;
 var interval = null;
 var current = null;
+var search = null;
 
 function loadMap() {
 	Map.load("./maps/small.json", ctx, function(response) {
@@ -33,6 +34,9 @@ function start() {
 	document.getElementById("btnStop").disabled = false;
 	current = map.grid[0][0];
 	
+	// Set up search object
+	search = new PseudoRandomSearch(map, map.grid[map.start_x][map.start_y]);
+	
 	searchLoop();
 	interval = setInterval(searchLoop, DELAY);
 }
@@ -46,18 +50,18 @@ function stop() {
 function searchLoop() {
 	// Draw map and then current node over top
 	map.draw(ctx);
-	ctx.fillStyle = "#00F";
-	ctx.fillRect(current.x * SQUARE_WIDTH, current.y * SQUARE_HEIGHT, SQUARE_WIDTH, SQUARE_HEIGHT);
+	
+	// Draw search pointer / path
+	search.draw(ctx);
 	
 	// Terminate at goal
-	if (current.type == Type.GOAL) {
+	if (search.foundGoal()) {
 		console.log("Found goal");
 		clearInterval(interval);
 	}
-	console.log(Search.successors(current, map));
-	// Update current to first possible successor
-	var succs = Search.successors(current, map);
-	var rand = Math.floor(Math.random() * (succs.length));
-	console.log("rand" + rand);
-	current = succs[rand];
+	
+	// Step search function
+	search.step();
+	
+
 }
